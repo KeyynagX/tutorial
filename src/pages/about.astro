@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const pageTitle = "私について"
 
 const identity = {
@@ -10,9 +11,15 @@ const identity = {
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "ドキュメントの執筆"]
 
+const familiy = ["rio", "nobo", "mamo"];
+
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -29,6 +36,17 @@ const goal = 3;
         <a href="/blog/">ブログ</a>
 
 		<h1>{pageTitle}</h1>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
         <h2>... そして私の新しいAstroサイトについて！</h2>
 
         <p>私はAstroの入門チュートリアルを進めています。これは私のウェブサイトの2番目のページで、自分で作った初めてのページです！</p>
@@ -42,9 +60,10 @@ const goal = 3;
                 <li>私の2つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
             }
         </ul>
+        <p>私の家族は{familiy.join('と')}です。</p>
         <p>私のスキルは以下の通りです。</p>
         <ul>
-        {skills.map((skill) => <li>{skill}</li>)}
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
         </ul>
 
         {happy && <p>I am happy to be learning Astro! Astroを学べて幸せです！</p>}

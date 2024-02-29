@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-const pageTitle = "私について"
+const pageTitle = "私について";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const identity = {
     firstName: "yamekey",
@@ -14,7 +14,7 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "ドキュメン�
 const familiy = ["rio", "nobo", "mamo"];
 
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 3;
 
 const skillColor = "navy";
@@ -31,16 +31,9 @@ const textCase = "uppercase";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-        <a href="/">ホーム</a>
-        <a href="/about/">概要</a>
-        <a href="/blog/">ブログ</a>
+        <BaseLayout pageTitle={pageTitle}>
 
-		<h1>{pageTitle}</h1>
         <style define:vars={{skillColor, fontWeight, textCase}}>
-            h1 {
-              color: purple;
-              font-size: 4rem;
-            }
             .skill {
                 color: var(--skillColor);
                 font-weight: var(--fontWeight);
@@ -71,5 +64,7 @@ const textCase = "uppercase";
         {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
 
         {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
+        
+        </BaseLayout>
 	</body>
 </html>
